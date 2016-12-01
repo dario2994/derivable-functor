@@ -1,2 +1,7 @@
 *.o
+*.gch
+public
+functors
+derivatives
+util
 derivable_functor_test

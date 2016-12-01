@@ -40,10 +40,24 @@ auto D(const Sum<Functor1, Functor2>& s) {
     return MakeSum(D(s.f), D(s.g)); 
 }
 
+// Difference
+template <typename Functor1, typename Functor2>
+auto D(const Difference<Functor1, Functor2>& s) {
+    return MakeDifference(D(s.f), D(s.g)); 
+}
+
 // Product
 template <typename Functor1, typename Functor2>
 auto D(const Product<Functor1, Functor2>& s) {
     return MakeSum(MakeProduct(D(s.f), s.g), MakeProduct(s.f, D(s.g))); 
+}
+
+// Division
+template <typename Functor1, typename Functor2>
+auto D(const Division<Functor1, Functor2>& s) {
+    return MakeDivision(
+        MakeDifferece(MakeProduct(D(s.f), s.g), MakeProduct(s.f, D(s.g))),
+        MakeProduct(s.g, s.g)); 
 }
 
 }  // namespace DerivableFunctor

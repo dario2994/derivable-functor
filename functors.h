@@ -56,6 +56,18 @@ struct Sum : BinaryFunctorOperator<Functor1, Functor2> {
 };
 BINARY_OPERATOR_MAKE(Sum)
 
+// Difference
+template <typename Functor1, typename Functor2>
+struct Difference : BinaryFunctorOperator<Functor1, Functor2> {
+    USE_STANDARD_BINARY_OPERATOR_CONSTRUCTOR
+
+    template <typename T>
+    T operator ()(const T& x) const {
+        return this->f(x) - this->g(x);
+    }
+};
+BINARY_OPERATOR_MAKE(Difference)
+
 // Product
 template <typename Functor1, typename Functor2>
 struct Product : BinaryFunctorOperator<Functor1, Functor2> {
@@ -67,6 +79,18 @@ struct Product : BinaryFunctorOperator<Functor1, Functor2> {
     }
 };
 BINARY_OPERATOR_MAKE(Product)
+
+// Division
+template <typename Functor1, typename Functor2>
+struct Division : BinaryFunctorOperator<Functor1, Functor2> {
+    USE_STANDARD_BINARY_OPERATOR_CONSTRUCTOR
+
+    template <typename T>
+    T operator ()(const T& x) const {
+        return this->f(x) / this->g(x);
+    }
+};
+BINARY_OPERATOR_MAKE(Division)
 
 }  // namespace DerivableFunctor
 

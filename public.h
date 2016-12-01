@@ -18,8 +18,14 @@ constexpr Identity X;
 // Sum
 PUBLIC_BINARY_OPERATOR(Sum, operator+)
 
+// Difference
+PUBLIC_BINARY_OPERATOR(Difference, operator-)
+
 // Product
 PUBLIC_BINARY_OPERATOR(Product, operator*)
+
+// Division
+PUBLIC_BINARY_OPERATOR(Division, operator/)
 
 }  // namespace DerivableFunctor
 
