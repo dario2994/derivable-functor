@@ -56,7 +56,7 @@ auto D(const Product<Functor1, Functor2>& s) {
 template <typename Functor1, typename Functor2>
 auto D(const Division<Functor1, Functor2>& s) {
     return MakeDivision(
-        MakeDifferece(MakeProduct(D(s.f), s.g), MakeProduct(s.f, D(s.g))),
+        MakeDifference(MakeProduct(D(s.f), s.g), MakeProduct(s.f, D(s.g))),
         MakeProduct(s.g, s.g)); 
 }
 

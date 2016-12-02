@@ -9,12 +9,16 @@
 #include "functors.h"
 #include "derivatives.h"
 
-namespace DerivableFunctor {
 
 // A syntax sugar to use in expressions.
 // Example: X*X + X + 1 is possible only for this definition.
-constexpr Identity X;
+// It is on purpose out of the DerivableFunctor namespace. This way the user
+// doesn't have to write "using namespace DerivableFunctor" or similar stuff
+// as it is just working out of the box (at the cost of polluting the global
+// namespace).
+constexpr DerivableFunctor::Identity X;
 
+namespace DerivableFunctor {
 // Sum
 PUBLIC_BINARY_OPERATOR(Sum, operator+)
 
