@@ -60,6 +60,14 @@ auto D(const Division<Functor1, Functor2>& s) {
         MakeProduct(s.g, s.g)); 
 }
 
+// Composition
+template <typename Functor1, typename Functor2>
+auto D(const Composition<Functor1, Functor2>& s) {
+    return MakeProduct(
+        MakeComposition(D(s.f), s.g),
+        D(s.g)); 
+}
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_DERIVATIVES_H

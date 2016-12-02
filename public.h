@@ -31,6 +31,12 @@ PUBLIC_BINARY_OPERATOR(Product, operator*)
 // Division
 PUBLIC_BINARY_OPERATOR(Division, operator/)
 
+// Composition
+// We are using the operator | as seems to be the one best fitting for the role.
+// The perfect one would have been ◦ but, as you can guess, is not an
+// operator in C++.
+PUBLIC_BINARY_OPERATOR(Composition, operator|)
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_PUBLIC_H

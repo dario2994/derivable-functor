@@ -92,6 +92,18 @@ struct Division : BinaryFunctorOperator<Functor1, Functor2> {
 };
 BINARY_OPERATOR_MAKE(Division)
 
+// Composition
+template <typename Functor1, typename Functor2>
+struct Composition : BinaryFunctorOperator<Functor1, Functor2> {
+    USE_STANDARD_BINARY_OPERATOR_CONSTRUCTOR
+
+    template <typename T>
+    T operator ()(const T& x) const {
+        return this->f(this->g(x));
+    }
+};
+BINARY_OPERATOR_MAKE(Composition)
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_FUNCTORS_H

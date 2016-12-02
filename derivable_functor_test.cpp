@@ -60,6 +60,17 @@ void TestingRationalFunctions() {
     ExpectDifferentEvaluation(f, g+1, 5.0);
 }
 
+void TestingComposition() {
+    const auto& f = D((X*X) | (X+1));
+    const auto& g = 2*(X+1);
+    ExpectEqualEvaluation(f, g, 3.0);
+    ExpectEqualEvaluation(f, g, 5.0);
+    ExpectEqualEvaluation(f, g, 8ll);
+    ExpectEqualEvaluation(f, g, 100000000000ll);
+    ExpectDifferentEvaluation(f, g+1, 3.0);
+}
+
 int main() {
     TestingRationalFunctions();
+    TestingComposition();
 }
