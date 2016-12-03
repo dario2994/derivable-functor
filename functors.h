@@ -104,6 +104,30 @@ struct Composition : BinaryFunctorOperator<Functor1, Functor2> {
 };
 BINARY_OPERATOR_MAKE(Composition)
 
+// Sine
+template <typename Functor>
+struct Sine : UnaryFunctorOperator<Functor> {
+    USE_STANDARD_UNARY_OPERATOR_CONSTRUCTOR
+
+    template <typename T>
+    T operator ()(const T& x) const {
+        return sin(this->f(x));
+    }
+};
+UNARY_OPERATOR_MAKE(Sine)
+
+// Cosine
+template <typename Functor>
+struct Cosine : UnaryFunctorOperator<Functor> {
+    USE_STANDARD_UNARY_OPERATOR_CONSTRUCTOR
+
+    template <typename T>
+    T operator ()(const T& x) const {
+        return cos(this->f(x));
+    }
+};
+UNARY_OPERATOR_MAKE(Cosine)
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_FUNCTORS_H

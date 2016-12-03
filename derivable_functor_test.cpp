@@ -70,7 +70,16 @@ void TestingComposition() {
     ExpectDifferentEvaluation(f, g+1, 3.0);
 }
 
+void TestingTrigonometricFunctions() {
+    const auto& f = D(sin(cos(X)));
+    const auto& g = -1 * cos(cos(X)) * sin(X);
+    ExpectEqualEvaluation(f, g, 3.0);
+    ExpectEqualEvaluation(f, g, 3432.143);
+    ExpectDifferentEvaluation(f, g+1, 0.0);
+}
+
 int main() {
     TestingRationalFunctions();
     TestingComposition();
+    TestingTrigonometricFunctions();
 }

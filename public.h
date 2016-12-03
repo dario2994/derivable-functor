@@ -37,6 +37,12 @@ PUBLIC_BINARY_OPERATOR(Division, operator/)
 // operator in C++.
 PUBLIC_BINARY_OPERATOR(Composition, operator|)
 
+// Sine
+PUBLIC_UNARY_OPERATOR(Sine, sin);
+
+// Cosine
+PUBLIC_UNARY_OPERATOR(Cosine, cos);
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_PUBLIC_H

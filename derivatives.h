@@ -68,6 +68,22 @@ auto D(const Composition<Functor1, Functor2>& s) {
         D(s.g)); 
 }
 
+// Sine
+template <typename Functor>
+auto D(const Sine<Functor>& s) {
+    return MakeProduct(
+        MakeCosine(s.f),
+        D(s.f));
+}
+
+// Cosine
+template <typename Functor>
+auto D(const Cosine<Functor>& s) {
+    return MakeProduct(Constant<int>(-1), MakeProduct(
+        MakeSine(s.f),
+        D(s.f)));
+}
+
 }  // namespace DerivableFunctor
 
 #endif  // DERIVABLE_FUNCTOR_DERIVATIVES_H

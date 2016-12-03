@@ -66,7 +66,7 @@ struct BinaryFunctorOperator : DerivableFunctor {
 
 // Use the costructor of the base class in an child functor.
 #define USE_STANDARD_UNARY_OPERATOR_CONSTRUCTOR \
-using UnaryFunctorOperator<Functor1, Functor2>::UnaryFunctorOperator;
+using UnaryFunctorOperator<Functor>::UnaryFunctorOperator;
 #define USE_STANDARD_BINARY_OPERATOR_CONSTRUCTOR \
 using BinaryFunctorOperator<Functor1, Functor2>::BinaryFunctorOperator;
 
@@ -79,9 +79,9 @@ using BinaryFunctorOperator<Functor1, Functor2>::BinaryFunctorOperator;
 // Example:
 // Instead of calling Sum<Type1, Type2>(f, g) we can call MakeSum(f, g).
 #define UNARY_OPERATOR_MAKE(Name) \
-template <typename Functor1> \
-Name <Functor1> Make##Name(const Functor1& f) { \
-    return Name <Functor1>(f); \
+template <typename Functor> \
+Name <Functor> Make##Name(const Functor& f) { \
+    return Name <Functor>(f); \
 }
 #define BINARY_OPERATOR_MAKE(Name) \
 template <typename Functor1, typename Functor2> \
@@ -151,8 +151,8 @@ typename std::enable_if<!IS_FUNCTOR(S) && !IS_FUNCTOR(T), \
 // the public exposed operator+ has different a different behaviors depending
 // on whether the second (or first) parameter is a functor.
 #define PUBLIC_UNARY_OPERATOR(Name, PublicName) \
-YES_TEMPLATE((Name<Functor1>)) \
-PublicName(const Functor1& f) { \
+YES_TEMPLATE((Name<Functor>)) \
+PublicName(const Functor& f) { \
     return Make##Name(f); \
 }
 #define PUBLIC_BINARY_OPERATOR(Name, PublicName) \
